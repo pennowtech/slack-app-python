@@ -30,6 +30,16 @@ def message_event_handler(payload):
         response = f'Welcome @{user_name}! :tada:'
         slack_client.chat_postMessage(channel=channel_id, text=response)
 
+# Example reaction emoji echo
+# This will require us to subscribe to 'reaction_added' event from 'Event Subscriptions'
+@slack_events_adapter.on("reaction_added")
+def reaction_added(payload):
+    event = payload["event"]
+    emoji = event["reaction"]
+    channel = event["item"]["channel"]
+    text = ":%s:" % emoji
+    slack_client.chat_postMessage(channel=channel, text=text)
+
 
 if __name__ == '__main__':
     slack_events_adapter.start(port=5000)
