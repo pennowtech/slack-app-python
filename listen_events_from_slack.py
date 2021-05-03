@@ -27,7 +27,7 @@ def message_event_handler(payload):
     user_name = user_info.get('user').get('name')
     
     if (RECEIVER_ID != user_id):
-        response = f'Welcome @{user_name}! :tada:'
+        response = f'Welcome <@{user_name}>! :wave:'
         slack_client.chat_postMessage(channel=channel_id, text=response)
 
 # Example reaction emoji echo
