@@ -9,7 +9,6 @@ SLACK_API_TOKEN = token = os.environ['SLACK_API_TOKEN']
 
 slack_client = WebClient(SLACK_API_TOKEN)
 
-RECEIVER_ID = slack_client.auth_test()['user_id']
 
 def send():
     # Create a timestamp for tomorrow at 9AM
@@ -21,7 +20,7 @@ def send():
     slack_client.chat_scheduleMessage(
         channel='#web-monitor',
         post_at=scheduled_time.timestamp(),
-        text="scheduleMessage: Summer has come and passed"
+        text="Scheduled Message: Hello"
     )
 
 
