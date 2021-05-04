@@ -141,10 +141,7 @@ def extract_input_val(req):
 
 
 def verify_input(url_val, frequency_val):
-    if url_val is None or frequency_val is None:
-        return False
-    else:
-        return True
+    return False if url_val is None or frequency_val is None else True
 
 
 @app.route("/webmonitor/interactivity", methods=["POST"])
